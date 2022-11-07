@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\kategori;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-class kategoriController extends Controller
+use App\Models\User;
+use Illuminate\Support\Facades\Session; 
+
+class userController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +15,8 @@ class kategoriController extends Controller
      */
     public function index()
     {
-        $kategori = kategori::paginate(2);
-        return view('menu.CRUDkategori.kategoriBarang', compact('kategori'));
+        $users = User::paginate(2);
+        return view('menu.akun.datauser',compact('users'));
     }
 
     /**
@@ -24,7 +26,8 @@ class kategoriController extends Controller
      */
     public function create()
     {
-        return view('menu.CRUDkategori.createKategori');
+        return view('menu.akun.createUser');
+        
     }
 
     /**
@@ -36,19 +39,23 @@ class kategoriController extends Controller
     public function store(Request $request)
     {
         $message = [
-            'required' => "Nama Kategori Tidak Boleh Kosong",
+            'required' => ":attribute Tidak Boleh Kosong",
             'min' => ':attribute Minimal :min Karakter',
             'max' => ':attribute Maksimal :max Karakter',
             'numeric' => ':attribute Wajib di isi Angka',
             
         ];
         $validateData =  $request->validate([
-            'kategori'=>'required|max:30|min:1',
+            'name'=>'required|max:50|min:1',
+            'role'=>'required',
+            'jk'=>'required',
+            'username'=>'required|max:30| min:1',
+            'password'=>'required|max:30| min:1'
         ], $message);
-
-        kategori::create($validateData);
-        Session::flash('success', 'Data Berhasil di Tambahkan!!');
-        return redirect('/data-kategori');
+        // return $request;
+        User::create($validateData);
+        Session::flash('success', 'Data Berhasil ditambahkan');
+        return redirect('/data-user');
     }
 
     /**
@@ -59,7 +66,8 @@ class kategoriController extends Controller
      */
     public function show($id)
     {
-        //
+        $userId = User::find($id);
+        return view('menu.akun.showUser', compact('userId'));
     }
 
     /**
@@ -70,10 +78,9 @@ class kategoriController extends Controller
      */
     public function edit($id)
     {
-        $kategori = kategori::find($id);
-        return view('menu.CRUDKategori.updateKategori', [
-            'kategori' => $kategori
-        ]);
+        $userId = User::find($id);
+        return view('menu.akun.updateUser',compact('userId'));
+        
     }
 
     /**
@@ -86,19 +93,23 @@ class kategoriController extends Controller
     public function update(Request $request, $id)
     {
         $message = [
-            'required' => "Nama Kategori Tidak Boleh Kosong",
+            'required' => ":attribute Tidak Boleh Kosong",
             'min' => ':attribute Minimal :min Karakter',
             'max' => ':attribute Maksimal :max Karakter',
             'numeric' => ':attribute Wajib di isi Angka',
             
         ];
         $validateData =  $request->validate([
-            'kategori'=>'required|max:30|min:1',
+            'name'=>'required|max:50|min:1',
+            'role'=>'required',
+            'jk'=>'required',
+            'username'=>'required|max:30| min:1',
+            'password'=>'required|max:30| min:1'
         ], $message);
-
-        kategori::find($id)->update($validateData);
+        // return $request;
+        User::find($id)->update($validateData);
         Session::flash('success', 'Data Berhasil di Update!!');
-        return redirect('/data-kategori');
+        return redirect('/data-user');
     }
 
     /**
@@ -109,12 +120,8 @@ class kategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function hapus($id)
-    {
-        kategori::find($id)->delete();
-        Session::flash('success', 'Data Berhasil di Hapus!!');
-        return redirect('/data-kategori');
+        User::find($id)->delete();
+        Session::flash('success', 'Data Berhasil diHapus !!');
+        return redirect('/data-user');
     }
 }

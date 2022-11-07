@@ -19,6 +19,7 @@
             <span>Dashboard</span></a>
     </li>
 
+
     <!-- Divider -->
     {{-- <hr class="sidebar-divider"> --}}
 
@@ -50,13 +51,52 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Master Barang</span>
+            <span>Master Data</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                <a class="collapse-item" href="data-barang">Data Barang</a>
-                <a class="collapse-item" href="data-kategori">Data Kategori</a>
+                <a class="collapse-item" href="/data-barang"> Data Barang</a>
+                <a class="collapse-item" href="/data-kategori">Data Kategori</a>
+            </div>
+        </div>
+    </li>
+     <!-- Divider -->
+ <hr class="sidebar-divider my-0">
+     <!-- Nav Item - Dashboard -->
+     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+            <span> Penjualan Offline</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                <a class="collapse-item" href="/kasir">Kasir</a>
+               
+            </div>
+        </div>
+    </li>
+    
+
+
+   <!-- Divider -->
+   <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-fax" aria-hidden="true"></i>
+
+            <span> Laporan Master Barang</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                <a class="collapse-item" href="/laporandatabarang"> <i class="fa fa-file" aria-hidden="true"></i>
+                    Laporan Data Barang</a>
             </div>
         </div>
     </li>
@@ -64,16 +104,20 @@
    <hr class="sidebar-divider my-0">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Laporan Master Barang</span>
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+
+
+            <span> Manajemen Akun</span>
         </a>
-        <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                <a class="collapse-item" href="buttons.html">Laporan Stok Barang</a>
-                <a class="collapse-item" href="cards.html">Laporan Harga Barang</a>
+                <a class="collapse-item" href="cards.html"> <i class="fa fa-id-card" aria-hidden="true"></i> Identitas</a>
+                
+                <a class="collapse-item" href="/data-user"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Data User</a>
             </div>
         </div>
     </li>
