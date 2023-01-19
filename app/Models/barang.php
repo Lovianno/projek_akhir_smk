@@ -21,5 +21,11 @@ class barang extends Model
         return $this->belongsTo(kategori::class);
     }
 
+    public function keranjang(){
+        return $this->hasOne(keranjang::class);
+    }
+    public function detail(){
+        return $this->hasOne(detail_transaksi::class);
+    }
 
 }

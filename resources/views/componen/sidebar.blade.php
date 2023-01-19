@@ -1,5 +1,5 @@
 
-<ul  class="bg-danger  navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul  class="bg-primary   navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -90,13 +90,15 @@
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa fa-fax" aria-hidden="true"></i>
 
-            <span> Laporan Master Barang</span>
+            <span> Laporan</span>
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                 <a class="collapse-item" href="/laporandatabarang"> <i class="fa fa-file" aria-hidden="true"></i>
                     Laporan Data Barang</a>
+                <a class="collapse-item" href="/laporantransaksi"> <i class="fa fa-file" aria-hidden="true"></i>
+                    Laporan Transaksi</a>
             </div>
         </div>
     </li>
@@ -114,7 +116,7 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                <a class="collapse-item" href="cards.html"> <i class="fa fa-id-card" aria-hidden="true"></i> Identitas</a>
+                <a class="collapse-item" href="/identitas"> <i class="fa fa-id-card" aria-hidden="true"></i> Identitas</a>
                 
                 <a class="collapse-item" href="/data-user"><i class="fa fa-user-circle" aria-hidden="true"></i>
                     Data User</a>

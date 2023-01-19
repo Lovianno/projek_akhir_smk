@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'jk' => 'pria'
         ]);
+
+        
     }
 }

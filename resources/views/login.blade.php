@@ -22,20 +22,20 @@
 
 </head>
 
-<body class="bg-gradient-danger">
+<body class="bg-primary">
 
-    <div class="container">
+    <div class="container ">
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col-xl-10 col-lg-12 col-md-9 ">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
+                <div class="card o-hidden border-0 shadow-lg my-5 ">
+                    <div class="card-body p-0 ">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <img src="https://cdn.discordapp.com/attachments/972158077522542592/1028929478493220864/0ed3f774-4eb9-4275-b7f2-9b514f9676e9_11.jpeg" class="col-lg-6 d-none d-lg-block"></img>
+                            <img src="https://yt3.ggpht.com/ytc/AMLnZu-D2GRG7RbXFa7Sz1I3N5Mhj6aF0pfTkvllS22j=s900-c-k-c0x00ffffff-no-rj" class="col-lg-6 d-none d-lg-block">
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -63,7 +63,7 @@
                                                 id="exampleInputPassword" name="password"placeholder="Password">
                                         </div>
                                         
-                                        <input type="submit" value="LOGIN" class="btn btn-danger btn-user btn-block">
+                                        <input type="submit" value="LOGIN" class="btn btn-success btn-user btn-block">
                                     </form>
                                     <hr>
                                     

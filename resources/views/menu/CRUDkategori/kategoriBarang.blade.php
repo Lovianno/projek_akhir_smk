@@ -21,11 +21,26 @@
             <div class="card-body">
               <a href="{{ route('data-kategori.create') }}" class="btn btn-success mb-3"> <i class="fa fa-plus" aria-hidden="true"></i>
                 Data Kategori</a>
+
+                <form action=""  >
+                  <div class=" w-50 d-flex" >
+
+                <div class="form-group">
+                <input type="text" name="" id="" class="form-control" placeholder="CARI KATEGORI">
+               
+                </div>
+                
+                <div class="form-group">
+                <button class="btn btn-warning ml-1">CARI</button>
+                </div>
+                
+                </div>
+                
+              </form>
                 <p class="mb-1 h6 text-dark font-weight-bold">Menampilkan {{ $kategori->firstItem() }} - {{ $kategori->lastItem()  }} data dari total  {{ $kategori->total() }} data</p>
               
-                <div class="table-responsive-xl"> 
-                <table class="table text-center">
-                    <thead class=" bg-danger text-light">
+                <table class="table text-center table-responsive-xl" >
+                    <thead class=" bg-primary text-light">
                         <tr class="">
                           <th class=""scope="col">No</th>
                           <th scope="col">Nama Kategori</th>
@@ -35,7 +50,7 @@
                       <tbody>
                     @foreach ($kategori as $i => $item)
                     <tr>
-                        <td>{{ $kategori->firstItem() + $i }}</td>
+                        <td width="5%">{{ $kategori->firstItem() + $i }}.</td>
                         <td>{{ $item->kategori }}</td>
                        
                          <td>
@@ -81,6 +96,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 @endsection

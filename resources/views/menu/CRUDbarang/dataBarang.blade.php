@@ -14,17 +14,48 @@
     <div class="col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-4">
-                <h1 class="h1 mb-1 text-gray-800 text-center">Data Barang</h1>
+                <h1 class="h1 mb-1 text-gray-800 text-center" id="tes">Data Barang</h1>
                 {{-- <a href="{{ route('mastersiswa.create') }}" class="btn btn-success">Tambah Data</a> --}}
                
             </div>
             <div class="card-body">
-              <a href="{{ route('data-barang.create') }}" class="btn btn-success mb-3"> <i class="fa fa-plus" aria-hidden="true"></i> Data Barang</a>
               
+                <input type="text" name="search" class="form-control" id="search" placeholder="Cari"><hr>
+              
+              <a href="{{ route('data-barang.create') }}" class="btn btn-success mb-3"> <i class="fa 
+                fa-plus" aria-hidden="true"></i> Data Barang</a><br>
+
+                <form action="{{ route('data-barang.cari') }}"  method="GET">
+                  <div class=" d-flex " >
+
+                <div class="form-group  w-50">
+                <input type="text" name="nama" value="{{ $hasilnama }}" id="" class="form-control" placeholder="CARI BARANG">
+                </div>
+                <div class="form-group  ml-2">
+                  <select class="custom-select mr-sm-2" id="" name="kategori">
+                    <option selected value="">PILIH KATEGORI</option>
+                  
+                    @foreach($kategori as $item)
+                    <option value="{{ $item->id }}">{{ $item->kategori }}</option>
+                      @endforeach
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                <button type="submit" title="CARI" class="btn btn-success ml-1 btn-rounded"><i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <a href="/data-barang" title="REFRESH" class="btn btn-warning ml-0 btn-rounded"><i class="fa fa-retweet" aria-hidden="true"></i>
+                </a>
+                </div>
+                
+                </div>
+                
+              </form>
+                
                 <p class="mb-1 h6 text-dark font-weight-bold">Menampilkan {{ $barang->firstItem() }} - {{ $barang->lastItem()  }} data dari total  {{ $barang->total() }} data</p>
                 <div class="table-responsive-xl"> 
-                <table class="table text-center">
-                    <thead class=" bg-danger text-light">
+                <table class="table text-center" id="tabel">
+                    <thead class=" bg-primary text-light">
                         <tr class="">
                           <th class=""scope="col">No</th>
                           <th scope="col">Nama Barang</th>
@@ -34,10 +65,10 @@
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="allData">
                     @foreach ($barang as $i => $b)
-                    <tr>
-                        <td>{{ $barang->firstItem()+$i }}</td>
+                    <tr id="listBarang">
+                        <td width="5%">{{ $barang->firstItem()+$i }}.</td>
                         <td>{{ $b->nama }}</td>
                         <td>{{ $b->kategori->kategori }}</td>
                         <td>{{ $b->harga }}</td>
@@ -49,40 +80,21 @@
                             <a href="{{ route('data-barang.hapus', $b->id) }}" class="btn btn-sm btn-danger btn-circle"title="Hapus Barang"><i class="fas fa-trash"></i></a>
                             {{-- <a class="btn btn-sm btn-danger btn-circle" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i></a> --}}
                              
-                            {{-- --------------------Modal ---------------------------}}
-                    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            Apakah anda yakin untuk menghapus {{ $b->nama  }} ? 
-                          </div>
-                          <div class="modal-footer">
-                            <a href="{{ route('data-barang.hapus', $b->id) }}" class="btn btn-danger">Hapus</a>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                           </td>
                     </tr>
                     @endforeach
-                   
-
-                        
-                      
+                    
                       </tbody>
+                      {{-- ==================================================== --}}
+                      <tbody id="Content"></tbody>
                   </table>
                  
-                  <div class="card-footer d-flex justify-content-between ">
+                  <div class="card-footer d-flex justify-content-between " id="paginateAll">
                     
                     {{  $barang->links() }}
                 </div>
+                 
                 </div>
             </div>
         </div>
@@ -90,8 +102,39 @@
 </div>
 
 
+  <script type="text/javascript">
   
+  
+   $(document).ready(function(){
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+       $(document).on('keyup', '#search', function(){
+            $search = $(this).val();
+            
+            $.ajax({
+              method: "post",
+              url: 'search',
+              data: JSON.stringify({
+                search: $search
+              }),
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              success: function(data){
 
+                $("#allData").hide();
+                $("#Content").html(data);
+              }
+            })
+          });
+       
+  });
+
+    </script>
 @endsection
 
     

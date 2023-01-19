@@ -24,7 +24,7 @@
                 <p class="mb-1 h6 text-dark font-weight-bold">Menampilkan {{ $users->firstItem() }} - {{ $users->lastItem()  }} data dari total  {{ $users->total() }} data</p>
                 <div class="table-responsive-xl"> 
                 <table class="table text-center">
-                    <thead class=" bg-danger text-light">
+                    <thead class=" bg-primary text-light">
                         <tr class="">
                           <th class=""scope="col">No</th>
                           <th scope="col">Nama</th>
@@ -36,25 +36,26 @@
                       </thead>
                       <tbody>
                     @foreach ($users as $i => $user)
-                    <tr>
-                        <td>{{ $users->firstItem() +$i }}</td>
+                    <tr class="table-borderless">
+                        <td width="5%">{{ $users->firstItem() +$i }}.</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->role }}</td>
+                        <form action="/data-user/{{ $user->id }}" method="post">
                        
                          <td >
-                            <a href="" class="btn btn-sm btn-info btn-circle"><i class="fas fa-info"></i></a>
+                            <a href="{{ route('data-user.show', $user->id) }}" class="btn btn-sm btn-info btn-circle"><i class="fas fa-info"></i></a>
                             <a href="{{ route('data-user.edit', $user->id) }}" class="btn btn-sm btn-warning btn-circle"><i class="fas fa-edit"></i></a>
 
-                            <form action="/data-user/{{ $user->id }}" method="post">
                                 @csrf
                                 @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                            </form>
                             {{-- {{ route('data-kategori.edit') }} --}}
+                          </form>
 
                             
                     @endforeach
+
                        
                         
                       

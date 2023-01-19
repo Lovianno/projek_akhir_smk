@@ -15,9 +15,13 @@ class barangController extends Controller
     public function index()
     {
         // $barang = barang::with('kategori')->get();
+        $hasilnama = "";
+
         $barang = barang::paginate(5);
+        $kategori = kategori::get();
+        
         // return [$barang, $barang->kategori];
-        return view('menu.CRUDbarang.dataBarang', compact('barang'));
+        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama'));
     }
 
     /**
@@ -182,4 +186,47 @@ class barangController extends Controller
         return redirect('/data-barang');
        
     }
+
+    public function search(Request $request){
+        $cari = $request['search'];
+        $barang = barang::where('nama','LIKE', '%'.$cari.'%')->paginate(2);
+        // echo $barang;
+        $output = '';
+        foreach($barang as $i => $b){
+            $output.='
+            <tr>
+            <td>'.$barang->firstItem()+$i .'</td>
+            <td>'.$b->nama .'</td>
+            <td>'. $b->kategori->kategori.'</td>
+            <td>'. $b->harga .'</td>
+             <td>'. $b->stok .'</td>
+             <td>
+             <a href="'. route('data-barang.tambahstok', $b->id) .'" class="btn btn-sm btn-primary btn-circle" title="Tambah Stok Barang"><i class="fa fa-cart-plus"></i></a>
+             <a href="'. route('data-barang.show', $b->id) .'" class="btn btn-sm btn-info btn-circle" title="Detail Barang"><i class="fas fa-info"></i></a>
+             <a href="'. route('data-barang.edit', $b->id) .'" class="btn btn-sm btn-warning btn-circle" title="Edit Barang"><i class="fas fa-edit"></i></a>
+             <a href="'. route('data-barang.hapus', $b->id) .'" class="btn btn-sm btn-danger btn-circle"title="Hapus Barang"><i class="fas fa-trash"></i></a>
+             </td>
+            
+            </tr> ';
+        }
+        return response($output);
+      
+       
+
 }
+
+    public function cariBarang(Request $request){
+        $hasilnama = $request->nama;
+        $hasilkategori = $request->kategori;
+        $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
+                    ->where('kategori_id', 'like','%'.$request->kategori.'%')
+                    ->paginate(5);
+                    $kategori = kategori::get();
+
+return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
+
+    }
+
+
+}
+

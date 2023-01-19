@@ -1,5 +1,5 @@
 @extends('componen.admin')
-@section('title', 'Tambah User')
+@section('title', 'Update User')
     
 
 @section('content')
@@ -18,7 +18,7 @@
     <div class="col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-4">
-                <h1 class="h1 mb-1 text-gray-800 text-center">Tambah Data User</h1>
+                <h1 class="h1 mb-1 text-gray-800 text-center">Update Data User</h1>
               
                
             </div>

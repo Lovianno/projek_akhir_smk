@@ -18,28 +18,26 @@
 	</style>
 	
 	<center>
-		<h5 class="border-top border-bottom border-dark p-2">Laporan Data Barang</h5>
+		<h5 class="border-top border-bottom border-dark p-2">Laporan Transaksi Penjualan</h5>
 	</center>
  
 	<table class='table table-bordered'>
 		<thead class="table-primary">
 			<tr>
 				<th class=""scope="col">No</th>
-                <th scope="col">Nama Barang</th>
-                <th scope="col">Kategori</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Stok</th>
+                <th scope="col">Kode Pembelian</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Harga Total</th>
 			</tr>
 		</thead>
 		<tbody>
 			
-      @foreach ($barang as $i => $b)
+      @foreach ($transaksi as $i => $b)
 			<tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $b->nama }}</td>
-        <td>{{ $b->kategori->kategori }}</td>
-        <td>{{ $b->harga }}</td>
-         <td>{{ $b->stok }}</td>
+        <td>{{ $b->kode_pembelian }}</td>
+        <td>{{ $b->date }}</td>
+        <td>{{ $b->hargatotal }}</td>
 			</tr>
 			@endforeach
 		</tbody>

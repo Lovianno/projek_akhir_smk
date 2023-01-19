@@ -15,7 +15,7 @@ class userController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(2);
+        $users = User::paginate(10);
         return view('menu.akun.datauser',compact('users'));
     }
 
@@ -66,8 +66,8 @@ class userController extends Controller
      */
     public function show($id)
     {
-        $userId = User::find($id);
-        return view('menu.akun.showUser', compact('userId'));
+        $user = User::find($id);
+        return view('menu.akun.showUser', compact('user'));
     }
 
     /**
@@ -123,5 +123,10 @@ class userController extends Controller
         User::find($id)->delete();
         Session::flash('success', 'Data Berhasil diHapus !!');
         return redirect('/data-user');
+    }
+    public function identitas()
+    {
+        
+        return view('menu.akun.identitasUser');
     }
 }
