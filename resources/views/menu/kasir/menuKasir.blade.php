@@ -200,7 +200,7 @@
                                     <input type="hidden" name="qty[]" value="{{ $item->qty }}">
                                     <input type="hidden" name="subtotal[]" value="{{ $item->subtotal }}">
                                 @endforeach
-                                <input type="submit" class="btn btn-success form-control" style="display: " value="CHECKOUT" id="checkout"></td>
+                                <input type="submit"  class="btn btn-success form-control" style="display: " value="CHECKOUT" id="checkout"></td>
                             </form>
                             
                            </tr>

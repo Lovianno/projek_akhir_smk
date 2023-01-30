@@ -4,6 +4,8 @@
 <head>
 
     <title>B Center - @yield('title')</title>
+    {{-- <link rel="shortcut icon" href="https://www.freeiconspng.com/uploads/love-png-5.png" width="350" alt="High Resolution Love Png Icon"> --}}
+    <link rel="shortcut icon" href="{{ asset('template/img/smk1.png') }}" width="350" alt="High Resolution Love Png Icon">
     @include('componen.head')
     
 </head>

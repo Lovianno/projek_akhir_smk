@@ -1,5 +1,5 @@
 @extends('componen.admin')
-@section('title', 'Tambah User')
+@section('title', 'Identitas')
     
 
 @section('content')
@@ -11,8 +11,13 @@
 
                 <div class="card-body">
                   
+                    @if(Auth()->user()->jk == "Laki-Laki")
                     <img class="img-profile rounded-circle"
-                    src="{{ asset('template/img/undraw_profile.svg') }}">
+                        src="{{ asset('template/img/undraw_profile.svg') }}">
+                    @else
+                    <img class="img-profile rounded-circle"
+                        src="{{ asset('template/img/undraw_profile_3.svg') }}">
+                        @endif  
 
 
                 </div>

@@ -70,7 +70,7 @@ class kasirController extends Controller
 
         $barangs = barang::where('nama','like',"%".$pencarian."%")
                     ->where('stok', '>' , 0)
-                    ->paginate(5);
+                    ->paginate(5)->withQueryString();
         return view('menu.kasir.menuKasir', compact('barangs','keranjang','totalHarga','hasilpencarian'));
         
     }
@@ -148,6 +148,7 @@ class kasirController extends Controller
                 $pegawai = Auth()->user()->id;
                 $totalHarga = keranjang::sum('subtotal');
                 $bayar = $request->paytotal;
+                $kembalian = $request->kembalian;
 
 
               $hasil =  transaksi::create([
@@ -155,7 +156,8 @@ class kasirController extends Controller
                     'date' => $date,
                     'pegawai_id'=> $pegawai,
                     'hargatotal'=>$totalHarga,
-                    'paytotal'=>$bayar
+                    'paytotal'=>$bayar,
+                    'kembalian'=>$kembalian
                 ]);
 
 
@@ -172,7 +174,11 @@ class kasirController extends Controller
             }
             keranjang::truncate();
             Session::flash('success', 'Transaksi Berhasil!!');
+            // $url = "/laporantransaksi/".$idTransaksi;
+            // echo "<script>window.open('".$url."', '_blank')</script>";
             return redirect('/kasir');
+
+
     }
 }
     }

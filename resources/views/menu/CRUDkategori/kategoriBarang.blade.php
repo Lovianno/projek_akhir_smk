@@ -22,16 +22,19 @@
               <a href="{{ route('data-kategori.create') }}" class="btn btn-success mb-3"> <i class="fa fa-plus" aria-hidden="true"></i>
                 Data Kategori</a>
 
-                <form action=""  >
-                  <div class=" w-50 d-flex" >
+                <form action="{{ route('data-kategori.cari') }}"  method="GET">
+                  <div class=" d-flex " >
 
-                <div class="form-group">
-                <input type="text" name="" id="" class="form-control" placeholder="CARI KATEGORI">
-               
+                <div class="form-group  w-50">
+                <input type="text" name="nama" value="" id="" class="form-control" placeholder="CARI KATEGORI">
                 </div>
                 
+                
                 <div class="form-group">
-                <button class="btn btn-warning ml-1">CARI</button>
+                <button type="submit" title="CARI" class="btn btn-success ml-2 btn-rounded"><i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <a href="/data-kategori" title="REFRESH" class="btn btn-warning ml-0 btn-rounded"><i class="fa fa-retweet" aria-hidden="true"></i>
+                </a>
                 </div>
                 
                 </div>
@@ -48,6 +51,11 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @if($kategori->isEmpty())
+                        <tr>
+                          <td colspan="3" class="font-weght-bold">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        </tr>
+                       @else 
                     @foreach ($kategori as $i => $item)
                     <tr>
                         <td width="5%">{{ $kategori->firstItem() + $i }}.</td>
@@ -87,7 +95,7 @@
                     @endforeach
                        
                         
-                      
+                      @endif
                       </tbody>
                   </table>
                   <div class="card-footer d-flex justify-content-start ">

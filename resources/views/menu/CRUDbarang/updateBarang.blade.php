@@ -45,7 +45,7 @@
             <select class="custom-select" id="kategori" name="kategori_id">
                 <option selected value="">Pilih</option>
                 @foreach($kategori as $k)
-                 <option value="{{ $k->id }}">{{ $k->kategori }}</option>
+                 <option value="{{ $k->id }}"@if($k->id == $barang->kategori->id) selected @endif >{{ $k->kategori }} </option>
                  @endforeach
              </select>
              

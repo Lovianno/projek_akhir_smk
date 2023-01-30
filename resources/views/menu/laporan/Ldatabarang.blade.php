@@ -35,6 +35,11 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @if($barang->isEmpty())
+                        <tr>
+                          <td colspan="5" class="font-weght-bold">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        </tr>
+                       @else 
                     @foreach ($barang as $i => $b)
                     <tr>
                         <td width="5%">{{ $barang->firstItem()+$i }}.</td>
@@ -47,7 +52,7 @@
                     @endforeach
                    
 
-                        
+                        @endif
                       
                       </tbody>
                   </table>

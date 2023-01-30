@@ -23,6 +23,7 @@ return new class extends Migration
                 ->onUpdate('cascade');
             $table->integer('hargatotal');
             $table->integer('paytotal');
+            $table->integer('kembalian');
             
             $table->timestamps();
         });

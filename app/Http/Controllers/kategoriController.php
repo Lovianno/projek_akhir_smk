@@ -117,4 +117,12 @@ class kategoriController extends Controller
         Session::flash('success', 'Data Berhasil di Hapus!!');
         return redirect('/data-kategori');
     }
+
+    public function cariKategori(Request $request){
+        $hasilcari = $request->nama;
+        $kategori = kategori::where('kategori', 'like', '%'.$request->nama.'%')->paginate(10)->withQueryString();
+
+        return view('menu.CRUDkategori.kategoriBarang', compact('kategori','hasilcari'));
+
+    }
 }

@@ -25,6 +25,7 @@
               <a href="{{ route('data-barang.create') }}" class="btn btn-success mb-3"> <i class="fa 
                 fa-plus" aria-hidden="true"></i> Data Barang</a><br>
 
+                {{-- CARI BARANG --}}
                 <form action="{{ route('data-barang.cari') }}"  method="GET">
                   <div class=" d-flex " >
 
@@ -36,15 +37,15 @@
                     <option selected value="">PILIH KATEGORI</option>
                   
                     @foreach($kategori as $item)
-                    <option value="{{ $item->id }}">{{ $item->kategori }}</option>
+                    <option value="{{ $item->id }} " @if($item->id == $hasilkategori) selected @endif>{{ $item->kategori }}</option>
                       @endforeach
                   </select>
                 </div>
                 
-                <div class="form-group">
-                <button type="submit" title="CARI" class="btn btn-success ml-1 btn-rounded"><i class="fa fa-search" aria-hidden="true"></i>
+                <div class="form-group d-flex ">
+                <button type="submit" title="CARI" class="btn btn-success ml-2 btn-rounded"><i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-                <a href="/data-barang" title="REFRESH" class="btn btn-warning ml-0 btn-rounded"><i class="fa fa-retweet" aria-hidden="true"></i>
+                <a href="/data-barang" title="REFRESH" class="btn btn-warning ml-1 btn-rounded"><i class="fa fa-retweet" aria-hidden="true"></i>
                 </a>
                 </div>
                 
@@ -66,6 +67,11 @@
                         </tr>
                       </thead>
                       <tbody id="allData">
+                        @if($barang->isEmpty())
+                        <tr>
+                          <td colspan="6" class="font-weght-bold">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        </tr>
+                       @else 
                     @foreach ($barang as $i => $b)
                     <tr id="listBarang">
                         <td width="5%">{{ $barang->firstItem()+$i }}.</td>
@@ -84,7 +90,7 @@
                           </td>
                     </tr>
                     @endforeach
-                    
+                    @endif
                       </tbody>
                       {{-- ==================================================== --}}
                       <tbody id="Content"></tbody>

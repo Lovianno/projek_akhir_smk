@@ -7,6 +7,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\laporanController;
 use App\Http\Controllers\kasirController;
+use App\Http\Controllers\dashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,14 @@ use App\Http\Controllers\kasirController;
 // Route::get('/barang', function () {
 //     return view('menu.dataBarang');
 // });
+
+// Dashboard
+
+
+// 
 Route::middleware('auth')->group(function(){
+Route::resource('/dashboard', dashboardController::class );
+
 Route::resource('/data-barang', barangController::class )->middleware('auth');
 Route::get('data-barang/{id_siswa}/hapus', [barangController::class, 'hapus'])->name('data-barang.hapus');
 Route::resource('/data-kategori', kategoriController::class );
@@ -34,6 +42,8 @@ Route::post('/logout', [loginController::class, 'logout']);
 // livesearch
 Route::post( 'search',[barangController::class, 'search'])->name('data-barang.search');
 Route::get( 'barang/cari',[barangController::class, 'cariBarang'])->name('data-barang.cari');
+Route::get( 'kategori/cari',[kategoriController::class, 'cariKategori'])->name('data-kategori.cari');
+Route::get( 'laporantransaksi/sort',[laporanController::class, 'sortingTanggal'])->name('laporantransaksi.sort');
 
 // data user
 Route::resource('/data-user', userController::class );
@@ -43,6 +53,7 @@ Route::get('/identitas', [userController::class, 'identitas'])->name('identitas'
 Route::get('/laporandatabarang', [laporanController::class, 'index'])->name('laporan.index');
 Route::get('/laporandatabarang/cetak_pdf', [laporanController::class, 'cetak_pdf']);
 Route::get('/laporantransaksi/cetak_pdf', [laporanController::class, 'cetaktrans_pdf']);
+Route::get('/laporantransaksi/cetakdetail_pdf', [laporanController::class, 'cetakdetailtrans_pdf'])->name('cetakdetail.transaksi');
 Route::get('/laporantransaksi', [laporanController::class, 'indexTransaksi'])->name('laporantransaksi.index');
 Route::get('/laporantransaksi/{id}', [laporanController::class, 'showTransaksi'])->name('laporantransaksi.show');
 

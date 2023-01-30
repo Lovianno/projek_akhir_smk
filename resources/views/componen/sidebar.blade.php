@@ -1,11 +1,13 @@
 
-<ul  class="bg-primary   navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul  class="bg-gradient-primary navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
+        </div> --}}
+        <img class="img-profile"
+                    src="{{ asset('template/img/smk1.png') }} " style="width:40px">
         <div class="sidebar-brand-text mx-3"> Business<sup> Center</sup></div>
     </a>
 
@@ -14,7 +16,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/masterdashboard">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>

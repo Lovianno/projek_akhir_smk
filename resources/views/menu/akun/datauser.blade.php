@@ -35,6 +35,11 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @if($users->isEmpty())
+                        <tr>
+                          <td colspan="5" class="font-weght-bold">TIDAK ADA DATA YANG DITEMUKAN</td>
+                        </tr>
+                       @else 
                     @foreach ($users as $i => $user)
                     <tr class="table-borderless">
                         <td width="5%">{{ $users->firstItem() +$i }}.</td>
@@ -55,7 +60,7 @@
 
                             
                     @endforeach
-
+@endif
                        
                         
                       

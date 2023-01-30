@@ -14,7 +14,8 @@ class transaksi extends Model
         'date',
         'pegawai_id',
         'hargatotal',
-        'paytotal'
+        'paytotal',
+        'kembalian'
     ];
 
     public function pegawai(){

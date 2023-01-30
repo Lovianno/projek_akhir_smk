@@ -39,9 +39,9 @@
                 <label for="kategori">Role :</label>
 
             <select class="custom-select" id="kategori" name="role">
-                <option selected value="">Pilih</option>
-                 <option value="admin">Admin</option>
-                 <option value="kasir">Kasir</option>
+                <option  value="">Pilih</option>
+                 <option value="admin" @if($userId->role == "admin") selected @endif>Admin</option>
+                 <option value="kasir" @if($userId->role == "kasir") selected @endif>Kasir</option>
             </select>
             </div>
 
@@ -49,9 +49,9 @@
                 <label for="kategori">Jenis Kelamin :</label>
 
             <select class="custom-select" id="kategori" name="jk">
-                <option selected value="">Pilih</option>
-                 <option value="Laki-Laki">Laki-laki</option>
-                 <option value="Perempuan">Perempuan</option>
+                <option  value="">Pilih</option>
+                 <option value="Laki-Laki" @if($userId->jk == "Laki-Laki") selected @endif>Laki-laki</option>
+                 <option value="Perempuan"@if($userId->jk == "Perempuan") selected @endif>Perempuan</option>
             </select>
             </div>
             <div class="form-group">

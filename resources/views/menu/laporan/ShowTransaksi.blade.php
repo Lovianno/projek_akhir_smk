@@ -61,14 +61,14 @@
                       </tr>
                       <tr class="font-weight-bold">
                           <td colspan="4"class="text-right">Kembalian</td>
-                          <td>Rp.</td>
+                          <td>Rp. {{ number_format($transaksi->kembalian) }}</td>
                       </tr>
                       </tbody>
                   </table>
 
 
               </div>
-          <a href="/laporantransaksi" class="btn btn-success mb-1">Cetak</a>
+          <a href="{{ route('cetakdetail.transaksi') }}" target="_blank" class="btn btn-success mb-1">Cetak</a>
           <a href="/laporantransaksi" class="btn btn-warning">Kembali</a>
               
           </div>

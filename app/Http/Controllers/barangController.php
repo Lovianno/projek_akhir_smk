@@ -16,12 +16,12 @@ class barangController extends Controller
     {
         // $barang = barang::with('kategori')->get();
         $hasilnama = "";
-
+        $hasilkategori = "";
         $barang = barang::paginate(5);
         $kategori = kategori::get();
         
         // return [$barang, $barang->kategori];
-        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama'));
+        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
     }
 
     /**
@@ -220,10 +220,10 @@ class barangController extends Controller
         $hasilkategori = $request->kategori;
         $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
                     ->where('kategori_id', 'like','%'.$request->kategori.'%')
-                    ->paginate(5);
+                    ->paginate(10)->withQueryString();
                     $kategori = kategori::get();
 
-return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
+        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
 
     }
 

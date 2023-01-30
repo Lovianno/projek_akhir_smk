@@ -52,7 +52,8 @@ class userController extends Controller
             'username'=>'required|max:30| min:1',
             'password'=>'required|max:30| min:1'
         ], $message);
-        // return $request;
+        $validateData['password'] = bcrypt($validateData['password']);
+     
         User::create($validateData);
         Session::flash('success', 'Data Berhasil ditambahkan');
         return redirect('/data-user');
@@ -104,7 +105,7 @@ class userController extends Controller
             'role'=>'required',
             'jk'=>'required',
             'username'=>'required|max:30| min:1',
-            'password'=>'required|max:30| min:1'
+            'password'=>'required|max:80| min:1'
         ], $message);
         // return $request;
         User::find($id)->update($validateData);
