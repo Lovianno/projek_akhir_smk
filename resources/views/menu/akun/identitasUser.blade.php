@@ -37,15 +37,15 @@
                         </div>
 
                          <div class="form-group mt-3">
-                        <input type="text" class="form-control " readonly readonly value="{{ Auth()->user()->username }}" name="">
+                        <input type="text" class="form-control text-uppercase" readonly readonly value="{{ Auth()->user()->username }}" name="">
                         </div>
 
                         <div class="form-group mt-3">
                             <input type="text" class="form-control" readonly  value="{{ Auth()->user()->jk }}">
                         </div>
-                        <div class="form-group mt-3">
+                        {{-- <div class="form-group mt-3">
                             <input type="text" class="form-control"  readonly value="{{ Auth()->user()->email }}">
-                        </div>
+                        </div> --}}
                         
 
                         

@@ -11,9 +11,13 @@ class kategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index()
     {
-        $kategori = kategori::paginate(10);
+        $kategori = kategori::orderBy('kategori', 'asc')->paginate(10);
         return view('menu.CRUDkategori.kategoriBarang', compact('kategori'));
     }
 
@@ -120,7 +124,7 @@ class kategoriController extends Controller
 
     public function cariKategori(Request $request){
         $hasilcari = $request->nama;
-        $kategori = kategori::where('kategori', 'like', '%'.$request->nama.'%')->paginate(10)->withQueryString();
+        $kategori = kategori::where('kategori', 'like', '%'.$request->nama.'%')->orderBy('kategori', 'ASC')->paginate(10)->withQueryString();
 
         return view('menu.CRUDkategori.kategoriBarang', compact('kategori','hasilcari'));
 

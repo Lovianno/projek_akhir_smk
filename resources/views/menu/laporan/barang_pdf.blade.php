@@ -21,17 +21,17 @@
 		<h5 class="border-top border-bottom border-dark p-2">Laporan Data Barang</h5>
 	</center>
  
-	<table class='table table-bordered'>
+	<table class='table '>
 		<thead class="table-primary">
 			<tr>
 				<th class=""scope="col">No</th>
                 <th scope="col">Nama Barang</th>
                 <th scope="col">Kategori</th>
                 <th scope="col">Harga</th>
-                <th scope="col">Stok</th>
+                {{-- <th scope="col">Stok</th> --}}
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="table-bordered">
 			
       @foreach ($barang as $i => $b)
 			<tr>
@@ -39,7 +39,7 @@
         <td>{{ $b->nama }}</td>
         <td>{{ $b->kategori->kategori }}</td>
         <td>{{ $b->harga }}</td>
-         <td>{{ $b->stok }}</td>
+         {{-- <td>{{ $b->stok }}</td> --}}
 			</tr>
 			@endforeach
 		</tbody>

@@ -20,15 +20,14 @@
 	<table class="table ">
 		<tr>
 			<td class="col-md-2">Kode Pembelian : {{ $transaksi->kode_pembelian }}</td>
-		</tr>
-		<tr>
 			<td class="col-md-2">Tanggal : {{ $transaksi->date }}</td>
-		</tr>
-		<tr>
 			<td class="col-md-2">Kasir : {{ $transaksi->pegawai->name }} </td>
 		</tr>
+		<tr>
+			<td colspan="3"></td>
+		</tr>
 	</table>
-	<table class="table table-bordered" >
+	<table class="table table-bordered" style="margin-top: -40px" >
 		<thead class="bg-primary text-light">
 			<td>#</td>
 			<td>Nama Barang</td>
@@ -64,7 +63,11 @@
 		</tr>
 		</tbody>
 	</table>
- 
+	{{-- <div class="">
+	<p class=" mb-1 text-gray-800 text-right">Rp. {{ number_format($transaksi->hargatotal )}}</p>
+	<p class=" mb-1 text-gray-800 text-right">Rp. {{ number_format($transaksi->paytotal) }}</p>
+	<p class=" mb-1 text-gray-800 text-right">Rp. {{ number_format($transaksi->kembalian) }}</p>
+	</div> --}}
 	
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>

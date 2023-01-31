@@ -59,7 +59,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                 <a class="collapse-item" href="/data-barang"> Data Barang</a>
+                @if(Auth()->user()->role == 'admin')
                 <a class="collapse-item" href="/data-kategori">Data Kategori</a>
+                @endif
             </div>
         </div>
     </li>
@@ -97,8 +99,12 @@
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                @if(Auth()->user()->role == 'admin')
                 <a class="collapse-item" href="/laporandatabarang"> <i class="fa fa-file" aria-hidden="true"></i>
                     Laporan Data Barang</a>
+                @endif
+                <a class="collapse-item" href="/laporanbaranghabis"> <i class="fa fa-file" aria-hidden="true"></i>
+                    Laporan Barang Habis</a>
                 <a class="collapse-item" href="/laporantransaksi"> <i class="fa fa-file" aria-hidden="true"></i>
                     Laporan Transaksi</a>
             </div>
@@ -119,9 +125,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                 <a class="collapse-item" href="/identitas"> <i class="fa fa-id-card" aria-hidden="true"></i> Identitas</a>
-                
+                @if(Auth()->user()->role == 'admin')
                 <a class="collapse-item" href="/data-user"><i class="fa fa-user-circle" aria-hidden="true"></i>
                     Data User</a>
+                @endif
+              
             </div>
         </div>
     </li>

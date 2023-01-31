@@ -13,6 +13,11 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+    {
+        $this->middleware('admin')->except('identitas');
+    }
+    
     public function index()
     {
         $users = User::paginate(10);

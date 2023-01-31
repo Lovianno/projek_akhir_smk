@@ -19,7 +19,7 @@ class kasirController extends Controller
         $hasilpencarian = "";
         $keranjang = keranjang::get();
         $totalHarga = keranjang::sum('subtotal');
-        $barangs = barang::where('stok', '>' , 0)->paginate(5);
+        $barangs = barang::where('stok', '>' , 0)->orderBy('nama', 'ASC')->paginate(5);
         return view('menu.kasir.menuKasir',compact('barangs', 'keranjang', 'totalHarga', 'hasilpencarian'));
     }
 
@@ -70,7 +70,7 @@ class kasirController extends Controller
 
         $barangs = barang::where('nama','like',"%".$pencarian."%")
                     ->where('stok', '>' , 0)
-                    ->paginate(5)->withQueryString();
+                    ->orderBy('nama', 'ASC')->paginate(5)->withQueryString();
         return view('menu.kasir.menuKasir', compact('barangs','keranjang','totalHarga','hasilpencarian'));
         
     }
@@ -174,9 +174,10 @@ class kasirController extends Controller
             }
             keranjang::truncate();
             Session::flash('success', 'Transaksi Berhasil!!');
-            // $url = "/laporantransaksi/".$idTransaksi;
+            Session::flash('Transaksi', 'Transaksi Berhasil!!');
+            $url = "/laporantransaksi/".$idTransaksi;
             // echo "<script>window.open('".$url."', '_blank')</script>";
-            return redirect('/kasir');
+            return redirect('/laporantransaksi/'.$idTransaksi);
 
 
     }

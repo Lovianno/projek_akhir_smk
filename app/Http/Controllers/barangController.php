@@ -12,12 +12,16 @@ class barangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin')->except('index', 'show', 'cariBarang');
+    }
     public function index()
     {
         // $barang = barang::with('kategori')->get();
         $hasilnama = "";
         $hasilkategori = "";
-        $barang = barang::paginate(5);
+        $barang = barang::orderBy('nama', 'asc')->paginate(5);
         $kategori = kategori::get();
         
         // return [$barang, $barang->kategori];
@@ -216,12 +220,12 @@ class barangController extends Controller
 }
 
     public function cariBarang(Request $request){
+        $kategori = kategori::get();
         $hasilnama = $request->nama;
-        $hasilkategori = $request->kategori;
+        $hasilkategori = $request->kategori;    
         $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
                     ->where('kategori_id', 'like','%'.$request->kategori.'%')
                     ->paginate(10)->withQueryString();
-                    $kategori = kategori::get();
 
         return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
 

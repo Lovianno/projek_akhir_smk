@@ -20,7 +20,7 @@ class dashboardController extends Controller
     {
         date_default_timezone_set('Asia/Jakarta');
         $tanggal = date('Y-m-d');
-        $transaksi = transaksi::where('date', '<=', $tanggal.' 23:59:59')->count();
+        $transaksi = transaksi::where('date', '>=', $tanggal.' 00:00:00')->count();
         $barang = barang::all()->count();
 
         // pendapatan harian
@@ -35,7 +35,7 @@ class dashboardController extends Controller
 
         // top 5 data
         // $ok = detail_transaksi::select('barang_id', DB::raw('COUNT(DISTINCT portofolio.id) AS total'))
-        $barangHabis = barang::where('stok', 0)->orderBy('kategori_id', 'DESC')->paginate(5);
+        $barangHabis = barang::where('stok', 0)->orderBy('nama', 'ASC')->paginate(5);
 
         return view('menu.dashboard', compact('transaksi','barang', 'totalHarian', 'totalBulanan', 'barangHabis' ));
     }

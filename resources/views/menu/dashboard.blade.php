@@ -148,7 +148,7 @@
         </div>
     </div> --}}
       <!-- Area Chart -->
-      <div class="col-xl-12 col-lg-7">
+      <div class="col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div
@@ -163,11 +163,11 @@
                 <div class="table-responsive-xl"> 
 
                 <table class="table  table-stripped">
-                    <thead class="thead-light text-center bg-gradient-info text-light">
+                    <thead class="thead-light text-center bg-gradient-primary text-light">
                         <td>No</td>
                         <td>Nama</td>
                         <td>Kategori</td>
-                        <td>Action</td>
+                        {{-- <td>Action</td> --}}
                     </thead>
                     <tbody class="text-center table-stripped" >
                         @foreach ($barangHabis as $i => $item)
@@ -175,13 +175,14 @@
                        <td width="5%">{{ $barangHabis->firstItem()+$i }}.</td>
                        <td width="40%">{{ $item->nama }}</td>
                        <td>{{ $item->kategori->kategori }}</td>
-                       <td>  <a href="{{ route('data-barang.tambahstok', $item->id) }}" class="btn btn-sm btn-primary btn-circle" title="Tambah Stok Barang"><i class="fa fa-cart-plus"></i></a></td>
+                       {{-- <td>  <a href="{{ route('data-barang.tambahstok', $item->id) }}" class="btn btn-sm btn-primary btn-circle" title="Tambah Stok Barang"><i class="fa fa-cart-plus"></i></a></td> --}}
                     </tr>
                        @endforeach
                     </tbody>
                     
                 </table>
-                {{ $barangHabis->links() }}
+                {{-- {{ $barangHabis->links() }} --}}
+                <a href="/laporanbaranghabis" class="btn btn-info"><i class="fas fa-info mr-2"></i>INFO LENGKAP</a>
             </div>
             </div>
         </div>

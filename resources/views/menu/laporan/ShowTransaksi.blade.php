@@ -69,8 +69,12 @@
 
               </div>
           <a href="{{ route('cetakdetail.transaksi') }}" target="_blank" class="btn btn-success mb-1">Cetak</a>
+          @if(Session::get('Transaksi'))
+          <a href="/kasir" class="btn btn-warning">Kembali</a>
+          @else
           <a href="/laporantransaksi" class="btn btn-warning">Kembali</a>
-              
+
+            @endif
           </div>
       </div>
       

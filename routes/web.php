@@ -43,6 +43,8 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::post( 'search',[barangController::class, 'search'])->name('data-barang.search');
 Route::get( 'barang/cari',[barangController::class, 'cariBarang'])->name('data-barang.cari');
 Route::get( 'kategori/cari',[kategoriController::class, 'cariKategori'])->name('data-kategori.cari');
+Route::get( 'laporandatabarang/sort',[laporanController::class, 'sortingKategori2'])->name('laporandatabarang.sort');
+Route::get( 'laporanbaranghabis/sort',[laporanController::class, 'sortingKategori'])->name('laporanbaranghabis.sort');
 Route::get( 'laporantransaksi/sort',[laporanController::class, 'sortingTanggal'])->name('laporantransaksi.sort');
 
 // data user
@@ -50,10 +52,14 @@ Route::resource('/data-user', userController::class );
 Route::get('/identitas', [userController::class, 'identitas'])->name('identitas');
 
 // Laporan
-Route::get('/laporandatabarang', [laporanController::class, 'index'])->name('laporan.index');
 Route::get('/laporandatabarang/cetak_pdf', [laporanController::class, 'cetak_pdf']);
 Route::get('/laporantransaksi/cetak_pdf', [laporanController::class, 'cetaktrans_pdf']);
 Route::get('/laporantransaksi/cetakdetail_pdf', [laporanController::class, 'cetakdetailtrans_pdf'])->name('cetakdetail.transaksi');
+// barang
+Route::get('/laporandatabarang', [laporanController::class, 'index'])->name('laporan.index');
+Route::get('/laporanbaranghabis', [laporanController::class, 'indexBarangHabis'])->name('laporan.indexBarang');
+
+// transaksi
 Route::get('/laporantransaksi', [laporanController::class, 'indexTransaksi'])->name('laporantransaksi.index');
 Route::get('/laporantransaksi/{id}', [laporanController::class, 'showTransaksi'])->name('laporantransaksi.show');
 
