@@ -43,7 +43,7 @@ class kasirController extends Controller
 
       
              Session::flash('success', 'Barang Telah Ditambahkan di Keranjang!!');
-            return redirect('/kasir');
+            return redirect()->back();
         }
         else{
             Session::flash('fail', 'Barang Sudah Ada di Keranjang!!');

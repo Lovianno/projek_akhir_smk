@@ -21,11 +21,13 @@ class barangController extends Controller
         // $barang = barang::with('kategori')->get();
         $hasilnama = "";
         $hasilkategori = "";
+        $hasilStok = "";
+
         $barang = barang::orderBy('nama', 'asc')->paginate(5);
         $kategori = kategori::get();
         
         // return [$barang, $barang->kategori];
-        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
+        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama','hasilStok', 'hasilkategori'));
     }
 
     /**
@@ -222,12 +224,28 @@ class barangController extends Controller
     public function cariBarang(Request $request){
         $kategori = kategori::get();
         $hasilnama = $request->nama;
-        $hasilkategori = $request->kategori;    
-        $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
-                    ->where('kategori_id', 'like','%'.$request->kategori.'%')
-                    ->paginate(10)->withQueryString();
+        $hasilkategori = $request->kategori;
+        $hasilStok = $request->stok;
+        if($request->stok == 'tersedia'){
+            $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
+                        ->where('kategori_id', 'like','%'.$request->kategori.'%')
+                        ->where('stok', '>', 0)
+                        ->paginate(10)->withQueryString();
+        }
+        else if($request->stok == 'habis'){
+            $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
+                        ->where('kategori_id', 'like','%'.$request->kategori.'%')
+                        ->where('stok', 0)
+                        ->paginate(10)->withQueryString();
+        }
+        else{
+             $barang = barang::where('nama', 'like', '%'.$request->nama.'%')
+                        ->where('kategori_id', 'like','%'.$request->kategori.'%')
+                        
+                        ->paginate(10)->withQueryString();
+        }
 
-        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori'));
+        return view('menu.CRUDbarang.dataBarang', compact('barang', 'kategori','hasilnama', 'hasilkategori','hasilStok'));
 
     }
 

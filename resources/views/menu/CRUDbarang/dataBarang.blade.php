@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
               
-                <input type="text" name="search" class="form-control" id="search" placeholder="Cari"><hr>
+                {{-- <input type="text" name="search" class="form-control" id="search" placeholder="Cari"><hr> --}}
               
               <a href="{{ route('data-barang.create') }}" class="btn btn-success mb-3"> <i class="fa 
                 fa-plus" aria-hidden="true"></i> Data Barang</a><br>
@@ -39,6 +39,13 @@
                     @foreach($kategori as $item)
                     <option value="{{ $item->id }} " @if($item->id == $hasilkategori) selected @endif>{{ $item->kategori }}</option>
                       @endforeach
+                  </select>
+                </div>
+                <div class="form-group  ml-1">
+                  <select class="custom-select mr-sm-2" id="" name="stok">                  
+                    <option value="" @if($hasilStok == '') selected @endif>PILIH STOK</option>
+                    <option value="tersedia"  @if($hasilStok == 'tersedia') selected @endif>STOK TERSEDIA</option>
+                    <option value="habis" @if($hasilStok == 'habis') selected @endif>STOK HABIS</option>
                   </select>
                 </div>
                 

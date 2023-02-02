@@ -40,7 +40,7 @@ Route::post('data-barang/{id_barang}', [barangController::class, 'storeStok'])->
 Route::post('/logout', [loginController::class, 'logout']);
 
 // livesearch
-Route::post( 'search',[barangController::class, 'search'])->name('data-barang.search');
+// Route::post( 'search',[barangController::class, 'search'])->name('data-barang.search');
 Route::get( 'barang/cari',[barangController::class, 'cariBarang'])->name('data-barang.cari');
 Route::get( 'kategori/cari',[kategoriController::class, 'cariKategori'])->name('data-kategori.cari');
 Route::get( 'laporandatabarang/sort',[laporanController::class, 'sortingKategori2'])->name('laporandatabarang.sort');

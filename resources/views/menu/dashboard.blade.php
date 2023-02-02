@@ -162,6 +162,13 @@
             <div class="card-body border">
                 <div class="table-responsive-xl"> 
 
+                    @if($barangHabis->isEmpty())
+                    
+                      <h5  class="h5 font-weght-bold text-center ">Tidak Ada Stok Barang Kosong</h5>
+
+                 
+                      @else
+
                 <table class="table  table-stripped">
                     <thead class="thead-light text-center bg-gradient-primary text-light">
                         <td>No</td>
@@ -170,6 +177,7 @@
                         {{-- <td>Action</td> --}}
                     </thead>
                     <tbody class="text-center table-stripped" >
+                      
                         @foreach ($barangHabis as $i => $item)
                         <tr>
                        <td width="5%">{{ $barangHabis->firstItem()+$i }}.</td>
@@ -183,6 +191,7 @@
                 </table>
                 {{-- {{ $barangHabis->links() }} --}}
                 <a href="/laporanbaranghabis" class="btn btn-info"><i class="fas fa-info mr-2"></i>INFO LENGKAP</a>
+                @endif
             </div>
             </div>
         </div>

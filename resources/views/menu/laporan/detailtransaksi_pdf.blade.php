@@ -17,18 +17,18 @@
 		}
 	</style> --}}
 	
-	<table class="table ">
+	<table class="table text-center" style="font-size: 13px">
 		<tr>
-			<td class="col-md-2">Kode Pembelian : {{ $transaksi->kode_pembelian }}</td>
-			<td class="col-md-2">Tanggal : {{ $transaksi->date }}</td>
-			<td class="col-md-2">Kasir : {{ $transaksi->pegawai->name }} </td>
+			<td class="col-md-2">Kode Pembelian: <br>{{ $transaksi->kode_pembelian }}</td>
+			<td class="col-md-2">Tanggal: <br>{{ $transaksi->date }}</td>
+			<td class="col-md-2">Kasir: {{ $transaksi->pegawai->name }} </td>
 		</tr>
 		<tr>
 			<td colspan="3"></td>
 		</tr>
 	</table>
-	<table class="table table-bordered" style="margin-top: -40px" >
-		<thead class="bg-primary text-light">
+	<table class="table table-bordered " style="margin-top: -40px; font-size:10px" >
+		<thead class="font-weight-bold">
 			<td>#</td>
 			<td>Nama Barang</td>
 			<td>Jumlah</td>

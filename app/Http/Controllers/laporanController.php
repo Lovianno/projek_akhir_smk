@@ -73,13 +73,21 @@ class laporanController extends Controller
 
     public function cetakdetailtrans_pdf()
     {
-
         $transaksi = session("transaksis");
         $details = session("detailtransaksi");
+        $i = 357;
+        $jumlahData = count($details);
+        for($j=5; $j <= $jumlahData; $j++ ){
+            $i+=30;
+        }
+        $i+=40;
         // $transaksi = transaksi::get();
-        $pdf = PDF::loadview('menu.laporan.detailtransaksi_pdf',['transaksi'=>$transaksi, 'details'=>$details])->setPaper(array(0, 0, 396, 442), 'landscape');
+        $pdf = PDF::loadview('menu.laporan.detailtransaksi_pdf',['transaksi'=>$transaksi, 'details'=>$details])->setPaper(array(0, 0, $i, 350), 'landscape');
+        // titik aman
+        // 327 - 358 = 31
         return $pdf->stream('Kwitansi.pdf');
-        // return view('menu.laporan.detailtransaksi_pdf', compact('details', 'transaksi'));
+        // return count($details);
+       
 
     }
     // Sorting Tanggal Transaksi
